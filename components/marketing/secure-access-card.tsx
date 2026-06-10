@@ -59,10 +59,13 @@ export function SecureAccessCard() {
 
   return (
     <Card
-      className="marketing-spotlight-surface mx-auto w-full max-w-[27.5rem] overflow-hidden border-white/[0.14] bg-[#070a12]/82"
+      className="login-access-card marketing-spotlight-surface mx-auto w-full max-w-[27.5rem] overflow-hidden border-white/[0.14] bg-[#070a12]/82"
       id="access"
     >
       <div className="h-px w-full bg-gradient-to-r from-transparent via-cyan-200/80 via-45% to-transparent" />
+      <div className="access-orbital-mark" aria-hidden="true">
+        <span>∞</span>
+      </div>
       <CardHeader className="p-6 pb-5 sm:p-8 sm:pb-6">
         <div className="flex items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-3">
@@ -147,6 +150,11 @@ export function SecureAccessCard() {
             )}
           </Button>
         </form>
+
+        <div className="access-status-line" aria-label="当前访问状态">
+          <span>Private beta</span>
+          <strong>Matrix secure gateway</strong>
+        </div>
 
         <div className="mt-5 grid grid-cols-3 gap-2 text-center text-[11px] font-medium text-slate-300">
           {trustItems.map((item, index) => (

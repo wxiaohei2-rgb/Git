@@ -42,6 +42,7 @@ import {
   type ModuleId,
   type WorkModule
 } from "@/lib/mock-data";
+import { Textarea } from "@/components/ui/textarea";
 
 const iconMap: Record<ModuleId, typeof MessageSquareText> = {
   copy: MessageSquareText,
@@ -50,6 +51,39 @@ const iconMap: Record<ModuleId, typeof MessageSquareText> = {
   batchVideo: MonitorPlay,
   avatar: Bot,
   insights: BarChart3
+};
+
+const moduleSignals: Record<ModuleId, Array<[string, string]>> = {
+  copy: [
+    ["输出", "脚本 / 标题 / 话术"],
+    ["语气", "平台适配"],
+    ["复核", "可复制导出"]
+  ],
+  image: [
+    ["画布", "参考图链路"],
+    ["比例", "4:3 / 3:4 / 16:9"],
+    ["版本", "可精修"]
+  ],
+  video: [
+    ["结构", "分镜节点"],
+    ["队列", "首帧 / 运动 / 裁切"],
+    ["时长", "15s / 30s"]
+  ],
+  batchVideo: [
+    ["素材", "批量上传"],
+    ["成片", "多平台规格"],
+    ["模板", "可复用"]
+  ],
+  avatar: [
+    ["直播", "60 分钟流程"],
+    ["互动", "问答库"],
+    ["线索", "商品卡承接"]
+  ],
+  insights: [
+    ["采集", "周期同步"],
+    ["漏斗", "曝光到试驾"],
+    ["复盘", "周报输出"]
+  ]
 };
 
 type SurfaceProps = {
@@ -175,12 +209,32 @@ export function MatrixWorkspace() {
         <StudioTopbar activeModule={activeModule} onLogout={logout} />
 
         <section className="workspace-surface" style={{ "--accent": activeModule.accent } as React.CSSProperties}>
+          <ModuleSignalBar module={activeModule} />
           <WorkspaceSurface activeId={activeId} canvasCount={canvasCount} {...surfaceProps} />
         </section>
       </section>
 
       {toast ? <div className="toast">{toast}</div> : null}
     </main>
+  );
+}
+
+function ModuleSignalBar({ module }: { module: WorkModule }) {
+  return (
+    <div className="module-signal-bar" aria-label={`${module.title}模块状态`}>
+      <div className="module-signal-title">
+        <span>{module.kicker}</span>
+        <strong>{module.title}</strong>
+      </div>
+      <div className="module-signal-grid">
+        {moduleSignals[module.id].map(([label, value]) => (
+          <div className="module-signal-card" key={label}>
+            <span>{label}</span>
+            <strong>{value}</strong>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -363,7 +417,7 @@ function CopyChatSurface({
               <button key={item} type="button">{item}</button>
             ))}
           </div>
-          <textarea
+          <Textarea
             aria-label="文案创作 Prompt"
             value={brief}
             onChange={(event) => onBriefChange(event.target.value)}
@@ -431,7 +485,7 @@ function ImageFlowSurface({
         </div>
 
         <div className="flow-prompt-bar">
-          <textarea
+          <Textarea
             aria-label="图像生成 Prompt"
             value={brief}
             onChange={(event) => onBriefChange(event.target.value)}
@@ -553,7 +607,7 @@ function VideoCanvasSurface({
           </div>
 
           <div className="canvas-prompt">
-            <textarea
+            <Textarea
               aria-label="视频生成 Prompt"
               value={brief}
               onChange={(event) => onBriefChange(event.target.value)}
@@ -599,7 +653,7 @@ function BatchVideoSurface({
           </label>
           <label>
             产品信息/经营信息
-            <textarea value={brief} onChange={(event) => onBriefChange(event.target.value)} />
+            <Textarea value={brief} onChange={(event) => onBriefChange(event.target.value)} />
           </label>
         </section>
 
@@ -703,7 +757,7 @@ function AvatarLiveSurface({
         <SurfaceHeader module={module} />
         <div className="live-script-card">
           <PanelTitle icon={<Mic2 size={17} />} title="直播脚本" />
-          <textarea
+          <Textarea
             aria-label="数字人直播 Prompt"
             value={brief}
             onChange={(event) => onBriefChange(event.target.value)}

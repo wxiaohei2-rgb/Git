@@ -1,7 +1,7 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { SectionHeader } from "@/components/marketing/section-header";
 
 const steps = [
   {
@@ -29,17 +29,14 @@ const steps = [
 export function WorkflowSection() {
   return (
     <section className="relative z-10 scroll-mt-24 py-12 pb-20 sm:py-16" id="workflow">
-      <div className="grid gap-8 rounded-lg border border-white/[0.12] bg-white/[0.055] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.32)] backdrop-blur-2xl lg:grid-cols-[0.82fr_1.18fr] lg:p-8">
+      <div className="workflow-shell grid gap-8 rounded-lg border border-white/[0.12] bg-white/[0.055] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.32)] backdrop-blur-2xl lg:grid-cols-[0.82fr_1.18fr] lg:p-8">
         <div>
-          <Badge className="mb-4" variant="outline">
-            Operating Model
-          </Badge>
-          <h2 className="text-3xl font-semibold leading-tight tracking-normal text-white sm:text-4xl">
-            更像一个营销生产系统，而不是一次性生成器
-          </h2>
-          <p className="mt-4 text-base leading-7 text-slate-300">
-            Matrix 的页面结构围绕“输入、生成、沉淀、复盘”组织，适合团队长期使用，而不只是单次体验。
-          </p>
+          <SectionHeader
+            badge="Operating Model"
+            className="mb-0"
+            title="更像一个营销生产系统，而不是一次性生成器"
+            description="Matrix 的页面结构围绕“输入、生成、沉淀、复盘”组织，适合团队长期使用，而不只是单次体验。"
+          />
           <Button asChild className="mt-8 h-12 w-full sm:w-auto" size="lg">
             <a href="#access">
               进入受控访问
@@ -48,26 +45,27 @@ export function WorkflowSection() {
           </Button>
         </div>
 
-        <div className="grid gap-3">
-          {steps.map((step) => (
-            <article
-              className="grid gap-3 rounded-md border border-white/[0.1] bg-[#0c1119]/72 p-4 sm:grid-cols-[4rem_minmax(0,1fr)] sm:items-center"
-              key={step.label}
-            >
-              <div className="flex items-center gap-3 sm:block">
-                <span className="inline-flex size-10 items-center justify-center rounded-md border border-cyan-200/25 bg-cyan-200/10 text-sm font-semibold text-cyan-100">
-                  {step.label}
-                </span>
-                <CheckCircle2 className="size-4 text-cyan-200 sm:mt-3" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-white">{step.title}</h3>
-                <p className="mt-1 text-sm leading-6 text-slate-300">{step.text}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+        <WorkflowSteps />
       </div>
     </section>
+  );
+}
+
+function WorkflowSteps() {
+  return (
+    <div className="workflow-steps">
+      {steps.map((step) => (
+        <article className="workflow-step" key={step.label}>
+          <div className="workflow-step-index">
+            <span>{step.label}</span>
+            <CheckCircle2 className="size-4" />
+          </div>
+          <div>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        </article>
+      ))}
+    </div>
   );
 }

@@ -7,13 +7,17 @@ const proofPoints = ["汽车营销创作", "多模态资产", "投放数据回�
 
 export function ProductHero() {
   return (
-    <section className="max-w-3xl py-8 sm:py-12 lg:py-16">
+    <section className="login-brand-panel max-w-3xl py-8 sm:py-12 lg:py-16">
       <Badge className="mb-6" variant="outline">
         <Sparkles className="size-3.5" />
         AI Creative Ops for Auto Marketing
       </Badge>
 
-      <h1 className="max-w-[12ch] text-4xl font-semibold leading-[1.04] tracking-normal text-white sm:text-6xl lg:text-7xl">
+      <div className="matrix-brand-mark" aria-hidden="true">
+        <span>∞</span>
+      </div>
+
+      <h1 className="brand-headline max-w-[12ch] text-4xl font-semibold leading-[1.04] tracking-normal text-white sm:text-6xl lg:text-7xl">
         <span className="block text-slate-300">大麦·Matrix</span>
         <span className="block text-white">∞ AI</span>
       </h1>
@@ -40,7 +44,7 @@ export function ProductHero() {
       <div className="mt-8 flex flex-wrap gap-3 text-sm text-slate-200">
         {proofPoints.map((item) => (
           <span
-            className="inline-flex min-h-9 items-center gap-2 rounded-md border border-white/[0.12] bg-white/[0.06] px-3 backdrop-blur"
+            className="brand-proof-pill inline-flex min-h-9 items-center gap-2 rounded-md border border-white/[0.12] bg-white/[0.06] px-3 backdrop-blur"
             key={item}
           >
             <CheckCircle2 className="size-4 text-cyan-200" />
