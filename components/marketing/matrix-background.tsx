@@ -17,6 +17,11 @@ export function MatrixBackground() {
         className="marketing-spotlight absolute left-1/2 top-0 h-[34rem] w-[72rem] -translate-x-1/2 opacity-80"
         aria-hidden="true"
       />
+      <div className="matrix-depth-horizon absolute inset-x-0 top-[7rem] h-[35rem]" aria-hidden="true" />
+      <div className="matrix-core-glyph absolute left-1/2 top-[5.2rem] -translate-x-1/2" aria-hidden="true">
+        ∞
+      </div>
+      <div className="matrix-entry-beacon absolute left-1/2 top-[17rem] -translate-x-1/2" aria-hidden="true" />
       <div className="matrix-beams absolute inset-0" aria-hidden="true" />
       <div className="matrix-particles absolute inset-0" aria-hidden="true" />
       <div className="matrix-orbit absolute left-1/2 top-[5.5rem] hidden -translate-x-1/2 lg:block" aria-hidden="true">

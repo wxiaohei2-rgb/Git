@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-const trustItems = ["受控访问", "资产保护", "内测空间"];
+const trustItems = ["受控访问", "项目资产保护", "面向市场化产品"];
 
 export function SecureAccessCard() {
   const [passcode, setPasscode] = useState("");
@@ -59,7 +59,7 @@ export function SecureAccessCard() {
 
   return (
     <Card
-      className="login-access-card marketing-spotlight-surface mx-auto w-full max-w-[27.5rem] overflow-hidden border-white/[0.14] bg-[#070a12]/82"
+      className="login-access-card marketing-spotlight-surface mx-auto w-full max-w-[28rem] overflow-hidden border-white/[0.14] bg-[#070a12]/82"
       id="access"
     >
       <div className="h-px w-full bg-gradient-to-r from-transparent via-cyan-200/80 via-45% to-transparent" />
@@ -84,14 +84,14 @@ export function SecureAccessCard() {
         </div>
 
         <div className="pt-8">
-          <p className="text-xs font-semibold uppercase tracking-normal text-cyan-200">
+          <p className="access-kicker text-xs font-semibold uppercase tracking-normal text-cyan-200">
             Controlled Access
           </p>
-          <CardTitle className="mt-3 text-[1.75rem] leading-tight tracking-normal text-white sm:text-[2rem]">
+          <CardTitle className="access-title mt-3 text-[1.75rem] leading-tight tracking-normal text-white sm:text-[2rem]">
             进入 Matrix 创作空间
           </CardTitle>
-          <CardDescription className="mt-3 max-w-[32ch] text-[0.95rem] leading-6 text-slate-300">
-            输入项目访问口令，继续进入汽车营销 AI 内容生产空间。
+          <CardDescription className="access-description mt-3 max-w-[34ch] text-[0.95rem] leading-6 text-slate-300">
+            输入项目访问口令，进入受控的汽车营销 AI 生产环境。
           </CardDescription>
         </div>
       </CardHeader>
@@ -131,7 +131,7 @@ export function SecureAccessCard() {
           ) : null}
 
           <Button
-            className="h-12 w-full rounded-md"
+            className="access-submit h-12 w-full rounded-md"
             disabled={loading}
             size="lg"
             type="submit"

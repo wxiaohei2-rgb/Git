@@ -245,11 +245,22 @@ function StudioSidebar({
   activeId: ModuleId;
   onSelect: (id: ModuleId) => void;
 }) {
+  const activeModule = modules.find((module) => module.id === activeId) ?? modules[0];
+
   return (
     <aside className="studio-sidebar" aria-label="工具导航">
       <Link className="studio-logo" href="/" aria-label="返回首页">
-        <span aria-hidden="true">∞</span>
+        <span className="studio-logo-mark" aria-hidden="true">∞</span>
+        <span className="studio-logo-copy">
+          <strong>大麦·Matrix</strong>
+          <em>AI Creative Ops</em>
+        </span>
       </Link>
+
+      <div className="studio-nav-heading">
+        <span>Workspace</span>
+        <strong>{activeModule.navTitle}</strong>
+      </div>
 
       <nav className="studio-icon-nav">
         {modules.map((module) => {
@@ -269,6 +280,11 @@ function StudioSidebar({
           );
         })}
       </nav>
+
+      <div className="studio-sidebar-footer">
+        <span>Secure beta</span>
+        <strong>Matrix assets are protected</strong>
+      </div>
     </aside>
   );
 }
@@ -289,7 +305,7 @@ function StudioTopbar({
       </div>
       <div className="studio-search">
         <Search size={17} />
-        <span>搜索项目、资产或历史创作</span>
+        <span>搜索项目、资产、脚本或历史创作</span>
       </div>
       <button className="ghost-button topbar-exit" type="button" onClick={onLogout}>
         <LogOut size={16} />
