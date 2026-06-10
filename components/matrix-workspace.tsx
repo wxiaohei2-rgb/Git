@@ -169,45 +169,10 @@ export function MatrixWorkspace() {
 
   return (
     <main className="studio-shell">
-      <aside className="studio-sidebar" aria-label="工具导航">
-        <Link className="studio-logo" href="/" aria-label="返回首页">
-          <span aria-hidden="true">♾️</span>
-        </Link>
-
-        <nav className="studio-icon-nav">
-          {modules.map((module) => {
-            const Icon = iconMap[module.id];
-            return (
-              <button
-                key={module.id}
-                className={module.id === activeId ? "studio-icon active" : "studio-icon"}
-                style={{ "--accent": module.accent } as React.CSSProperties}
-                type="button"
-                title={module.title}
-                onClick={() => setActiveId(module.id)}
-              >
-                <Icon size={19} />
-              </button>
-            );
-          })}
-        </nav>
-      </aside>
+      <StudioSidebar activeId={activeId} onSelect={setActiveId} />
 
       <section className="studio-main">
-        <header className="studio-topbar">
-          <div className="studio-brandline">
-            <span aria-hidden="true">♾️</span>
-            <strong>DaMai Matrix</strong>
-          </div>
-          <div className="studio-search">
-            <Search size={17} />
-            <span>搜索项目、资产或历史创作</span>
-          </div>
-          <button className="ghost-button topbar-exit" type="button" onClick={logout}>
-            <LogOut size={16} />
-            退出
-          </button>
-        </header>
+        <StudioTopbar activeModule={activeModule} onLogout={logout} />
 
         <section className="workspace-surface" style={{ "--accent": activeModule.accent } as React.CSSProperties}>
           <WorkspaceSurface activeId={activeId} canvasCount={canvasCount} {...surfaceProps} />
@@ -216,6 +181,67 @@ export function MatrixWorkspace() {
 
       {toast ? <div className="toast">{toast}</div> : null}
     </main>
+  );
+}
+
+function StudioSidebar({
+  activeId,
+  onSelect
+}: {
+  activeId: ModuleId;
+  onSelect: (id: ModuleId) => void;
+}) {
+  return (
+    <aside className="studio-sidebar" aria-label="工具导航">
+      <Link className="studio-logo" href="/" aria-label="返回首页">
+        <span aria-hidden="true">∞</span>
+      </Link>
+
+      <nav className="studio-icon-nav">
+        {modules.map((module) => {
+          const Icon = iconMap[module.id];
+          return (
+            <button
+              key={module.id}
+              className={module.id === activeId ? "studio-icon active" : "studio-icon"}
+              style={{ "--accent": module.accent } as React.CSSProperties}
+              type="button"
+              title={module.title}
+              onClick={() => onSelect(module.id)}
+            >
+              <Icon size={19} />
+              <span>{module.navTitle}</span>
+            </button>
+          );
+        })}
+      </nav>
+    </aside>
+  );
+}
+
+function StudioTopbar({
+  activeModule,
+  onLogout
+}: {
+  activeModule: WorkModule;
+  onLogout: () => void;
+}) {
+  return (
+    <header className="studio-topbar">
+      <div className="studio-brandline">
+        <span aria-hidden="true">∞</span>
+        <strong>大麦·Matrix ∞ AI</strong>
+        <em>{activeModule.navTitle}</em>
+      </div>
+      <div className="studio-search">
+        <Search size={17} />
+        <span>搜索项目、资产或历史创作</span>
+      </div>
+      <button className="ghost-button topbar-exit" type="button" onClick={onLogout}>
+        <LogOut size={16} />
+        退出
+      </button>
+    </header>
   );
 }
 

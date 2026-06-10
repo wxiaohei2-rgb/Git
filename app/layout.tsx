@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "DaMai Matrix",
+  title: "大麦·Matrix ∞ AI",
   description: "面向汽车营销创作者的 AI 内容生产平台"
 };
 

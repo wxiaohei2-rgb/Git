@@ -45,7 +45,7 @@ export const modules: WorkModule[] = [
     navTitle: "文案",
     kicker: "Copy Studio",
     description: "用对话完成脚本、标题、直播话术和平台适配文案。",
-    accent: "#6ee7ff",
+    accent: "#7dd3fc",
     defaultBrief:
       "为捷途旅行者生成一组小红书和抖音可用的周末露营种草文案，语气专业但有生活感。"
   },
@@ -55,7 +55,7 @@ export const modules: WorkModule[] = [
     navTitle: "图像",
     kicker: "Image Flow",
     description: "在创意画布里生成主视觉、封面、参考图和多版本视觉资产。",
-    accent: "#8cff64",
+    accent: "#93c5fd",
     defaultBrief:
       "清晨山地公路，捷途旅行者居中偏下，低饱和高级质感，适合社媒封面。"
   },
@@ -65,7 +65,7 @@ export const modules: WorkModule[] = [
     navTitle: "视频",
     kicker: "Video Canvas",
     description: "新建画布，编排分镜节点、首尾帧、时间线和生成队列。",
-    accent: "#ff755e",
+    accent: "#a78bfa",
     defaultBrief:
       "城市出发、山路穿越、露营抵达，生成 15 秒高级感汽车短片分镜。"
   },
@@ -75,7 +75,7 @@ export const modules: WorkModule[] = [
     navTitle: "批量",
     kicker: "Batch Video",
     description: "上传素材和经营信息，一键批量生成多平台短视频任务。",
-    accent: "#ffcc66",
+    accent: "#c4b5fd",
     defaultBrief:
       "使用 6 段门店素材，为捷途旅行者生成 12 条本地生活和企业营销短视频。"
   },
@@ -85,7 +85,7 @@ export const modules: WorkModule[] = [
     navTitle: "直播",
     kicker: "Avatar Live",
     description: "配置直播画面、主播脚本、互动问答、商品卡和线索承接。",
-    accent: "#b78cff",
+    accent: "#818cf8",
     defaultBrief:
       "生成一场 60 分钟捷途旅行者直播流程，重点讲空间、试驾权益和常见问题。"
   },
@@ -95,7 +95,7 @@ export const modules: WorkModule[] = [
     navTitle: "洞察",
     kicker: "Data Collector",
     description: "周期性采集曝光、互动、线索、账号表现、素材表现和转化漏斗。",
-    accent: "#66a6ff",
+    accent: "#60a5fa",
     defaultBrief:
       "每周一自动汇总上周内容表现，输出账号趋势、素材表现和下周选题建议。"
   }
